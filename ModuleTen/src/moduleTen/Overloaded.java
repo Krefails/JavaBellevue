@@ -4,7 +4,8 @@
  * Description - This program has four overloaded methods that take-in arrays of different data types. 
  * The overloaded methods return the average of the passed in array.
  * There is a method that returns a random number between 1 - 100.
- * There is a method that initalizes integer arrays and returns the array created.
+ * There is a method that initalizes integer arrays to a size between 1-100, sets the arrays values to a random number, 
+ * and returns the array created.
  * The main method initalizes four arrays of different data types (short, int, long, and double).
  * The main method prints all elements of the arrays to the console and calls/prints the overloaded average methods to the console. 
  * 
@@ -12,20 +13,20 @@
  * 
  *   Now printing all arrays --
  *   v Short:  v Int:    v Long:   v Double:
- *   13        96        50        89.00     
- *   12        98        88        14.00     
- *   27        47        56        43.00     
- *   12        4         16        73.00     
- *   36        66        66        5.00      
- *   13        5         33        46.00     
- *   53        85        59        97.00     
- *   44        30        87        23.00     
- *   8         88        8         64.00     
- *   60        48        77        98.00     
+ *   2         5         7         14.00     
+ *   13        10        9         12.00     
+ *   13        9         13        2.00      
+ *   1         11        7         1.00      
+ *   3         13        14        14.00     
+ *   9         14        5         12.00     
+ *   2         3         13        13.00     
+ *   15                  3                   
+ *   5                   7                   
+ *   6                                       
  *
  *   Now printing averages of arrays --
  *   v Short:  v Int:    v Long:   v Double: 
- *   27        56        54        55.20    
+ *   6         9         8         9.71   
  */
 
 package moduleTen;
@@ -41,7 +42,7 @@ public class Overloaded {
    */
   public static void main(String[] args) {
 
-    short[] shortArray = new short[10];
+    short[] shortArray = new short[randNumber()];
     for (short i = 0; i <= (shortArray.length - 1); i++) {
       shortArray[i] = (short) randNumber();
     }
@@ -50,26 +51,38 @@ public class Overloaded {
     long[] longArray = Arrays.stream(arrInitializr()).mapToLong(i -> i).toArray();
     double[] doubleArray = Arrays.stream(arrInitializr()).mapToDouble(i -> i).toArray();
 
+    int largest = Math.max(shortArray.length,
+        Math.max(intArray.length, Math.max(longArray.length, Math.max(doubleArray.length, shortArray.length))));
+
     System.out.printf("Now printing all arrays --\n%-10s%-10s%-10s%-10s", "v Short:", "v Int:", "v Long:",
         "v Double:\n");
 
-    for (int i = 0; i <= (shortArray.length - 1); i++) {
+    for (int i = 0; i <= (largest - 1); i++) {
 
       if ((shortArray.length - 1) >= i) {
         System.out.printf("%-10d", shortArray[i]);
+      } else {
+        System.out.printf("%-10s", " ");
       }
 
       if ((intArray.length - 1) >= i) {
         System.out.printf("%-10d", intArray[i]);
+      } else {
+        System.out.printf("%-10s", " ");
       }
 
       if ((longArray.length - 1) >= i) {
         System.out.printf("%-10d", longArray[i]);
+      } else {
+        System.out.printf("%-10s", " ");
       }
 
       if ((doubleArray.length - 1) >= i) {
-        System.out.printf("%-10.2f\n", doubleArray[i]);
+        System.out.printf("%-10.2f", doubleArray[i]);
+      } else {
+        System.out.printf("%-10s", " ");
       }
+      System.out.println();
     }
 
     System.out.printf("\nNow printing averages of arrays --\n%-10s%-10s%-10s%-10s\n", "v Short:", "v Int:", "v Long:",
@@ -161,7 +174,7 @@ public class Overloaded {
    */
   public static int[] arrInitializr() {
 
-    int arr[] = new int[10];
+    int arr[] = new int[randNumber()];
 
     for (int i = 0; i <= (arr.length - 1); i++) {
       arr[i] = randNumber();
