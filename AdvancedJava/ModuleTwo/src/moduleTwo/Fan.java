@@ -20,18 +20,6 @@ class Fan {
         this.color = color;
     }
 
-    public String toString(){
-        String status = "The " + color + " fan is currently ";
-        if (isOn) {
-            status += "on";
-        } else {
-            status += "off";
-        }
-        status += " with a speed of " + speed + " and a radius of " + radius;
-
-        return status;
-    }
-
     public int getSpeed() {
         return speed;
     }
