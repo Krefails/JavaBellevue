@@ -1,3 +1,9 @@
+/**
+ * Justin Kreifels
+ * 2022-03-30
+ * This class has multiple overloaded methods that return boolean values.
+ * It is only used in the JustinIntTest class.
+ */
 package moduleThree;
 
 class JustinInteger {
